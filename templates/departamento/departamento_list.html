@@ -1,0 +1,57 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Id_departamento&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;&nbsp;Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th>Estado</th>
+			
+		</tr>
+
+	</thead>
+
+<thead>
+{%if object_list %}
+{% for departamento in object_list %}
+<tr>
+		
+		&nbsp;&nbsp;<th>&nbsp;&nbsp;&nbsp;{{departamento.Id_departamento}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th>{{departamento.nombre}}</th>
+		<th>{{departamento.Estado}}</th>
+				
+		<td>
+			<a class="btn btn-primary" href="{%url 'departamento:departamento_editar' departamento.Id_departamento%}">Editar</a>
+
+			<a class="btn btn-danger" href="{%url 'departamento:departamento_eliminar' departamento.Id_departamento%}">Eliminar</a>
+
+			<a class="btn btn-default" href="{%url 'departamento:departamento_crear'%}">Nuevo</a>
+
+		</td>
+		
+		</tr>
+
+
+		{% endfor %}
+
+		{% else %}
+
+		<center>
+		<h1>No hay registros</h1>
+		<a class="btn btn-default" href="{%url 'departamento:departamento_crear'%}">Nuevo</a>
+		</center>
+
+		{% endif %}
+	</thead>
+
+</table>
+
+{% endblock %}
+
+
+
+				
+		
